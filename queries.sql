@@ -55,12 +55,7 @@ INSERT INTO bookings (booking_id, user_id, vehicle_id, start_date, end_date, sta
 (4, 1, 1, '2023-12-10', '2023-12-12', 'pending', 100);
 
 
-/* ==========================
-   ASSIGNMENT QUERIES
-   ========================== */
-
 -- Query 1: JOIN
--- Retrieve booking information with customer and vehicle name
 SELECT
     b.booking_id,
     u.name AS customer_name,
@@ -74,7 +69,6 @@ JOIN vehicles v ON b.vehicle_id = v.vehicle_id;
 
 
 -- Query 2: EXISTS
--- Find vehicles that have never been booked
 SELECT *
 FROM vehicles v
 WHERE NOT EXISTS (
@@ -85,7 +79,6 @@ WHERE NOT EXISTS (
 
 
 -- Query 3: WHERE
--- Retrieve all available vehicles of type 'car'
 SELECT *
 FROM vehicles
 WHERE status = 'available'
@@ -93,7 +86,6 @@ AND type = 'car';
 
 
 -- Query 4: GROUP BY & HAVING
--- Find vehicles with more than 2 bookings
 SELECT
     v.name AS vehicle_name,
     COUNT(b.booking_id) AS total_bookings
